@@ -1,0 +1,7 @@
+{
+    "/catalog-manager/v1/kylo/feed/csv": {
+        "post": {
+            "result": "created"
+        }
+    }
+}
