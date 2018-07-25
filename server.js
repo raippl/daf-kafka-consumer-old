@@ -71,7 +71,13 @@ consumer.on('message', function (message)
             response.json().then((json) => {
                     console.log('['+message.offset+'] Json ricevuto da kylo: ' + JSON.stringify(json))
                     if(!response.ok){
-                       insertError(value, message, json)
+                      var jsonParse = JSON.parse(json.fields)
+                      if(jsonParse.description.indexOf("TimeoutException")!==-1){
+                        console.log('['+message.offset+'] TimeoutException ricevuto da Kylo')
+                        insertSuccess(value, message)
+                      }else{
+                        insertError(value, message, json)
+                      }
                     }else{
                         var jsonParse = JSON.parse(json.fields)
                         if(jsonParse.success)
