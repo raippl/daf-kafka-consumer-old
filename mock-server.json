@@ -3,5 +3,10 @@
         "post": {
             "result": "created"
         }
+    },
+    "/catalog-manager/v1/catalog-ds/add": {
+        "post": {
+            "result": "created"
+        }
     }
 }
