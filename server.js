@@ -53,10 +53,11 @@ const urlNotification = 'https://api.daf.teamdigitale.it/dati-gov/v1/notificatio
 const urlcatalog = 'https://api.daf.teamdigitale.it/catalog-manager/v1/catalog-ds/add'
  */
 
-/*const daf_data_users= ["crimenghini","d_ale","d_mc","d_raf","rlillo","atroisi","raippl","dveronese","davidepanella","ctofani"]
-*/
+var daf_data_users= ["crimenghini","d_ale","d_mc","d_raf","rlillo","atroisi","raippl","dveronese","davidepanella","ctofani"]
 
+/*
 var daf_data_users= ["d_ale","raippl","ctofani"]
+*/
 
 consumer.on('message', function (message) 
 {
@@ -71,13 +72,13 @@ consumer.on('message', function (message)
             response.json().then((json) => {
                     console.log('['+message.offset+'] Json ricevuto da kylo: ' + JSON.stringify(json))
                     if(!response.ok){
-                      var jsonParse = JSON.parse(json.fields)
+                     /*  var jsonParse = JSON.parse(json.fields)
                       if(jsonParse.description.indexOf("TimeoutException")!==-1){
                         console.log('['+message.offset+'] TimeoutException ricevuto da Kylo')
                         insertSuccess(value, message)
-                      }else{
+                      }else{ */
                         insertError(value, message, json)
-                      }
+                     // }
                     }else{
                         var jsonParse = JSON.parse(json.fields)
                         if(jsonParse.success)
